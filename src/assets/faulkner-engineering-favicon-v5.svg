@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <!-- Chrome gradient for background -->
+    <linearGradient id="chromeBase" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a1a"/>
+      <stop offset="40%" style="stop-color:#0a0a0a"/>
+      <stop offset="60%" style="stop-color:#1f1f1f"/>
+      <stop offset="100%" style="stop-color:#0d0d0d"/>
+    </linearGradient>
+    
+    <!-- Chrome gradient for letters -->
+    <linearGradient id="chromeLetter" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff"/>
+      <stop offset="25%" style="stop-color:#e0e0e0"/>
+      <stop offset="50%" style="stop-color:#ffffff"/>
+      <stop offset="75%" style="stop-color:#b0b0b0"/>
+      <stop offset="100%" style="stop-color:#d0d0d0"/>
+    </linearGradient>
+    
+    <!-- Rim light -->
+    <linearGradient id="rimLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff" stop-opacity="0.3"/>
+      <stop offset="30%" style="stop-color:#ffffff" stop-opacity="0.05"/>
+      <stop offset="70%" style="stop-color:#ffffff" stop-opacity="0"/>
+      <stop offset="100%" style="stop-color:#ffffff" stop-opacity="0.15"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Dark chrome background -->
+  <circle cx="256" cy="256" r="256" fill="url(#chromeBase)"/>
+  
+  <!-- Rim light ring -->
+  <circle cx="256" cy="256" r="252" fill="none" stroke="url(#rimLight)" stroke-width="4"/>
+  
+  <!-- Subtle inner ring -->
+  <circle cx="256" cy="256" r="225" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.15"/>
+  
+  <!-- Centered letter group with italic slant -->
+  <g transform="translate(256, 256)">
+    <g transform="skewX(-12)">
+      <!-- F letter - centered -->
+      <path d="
+        M-130 -116
+        L-130 116
+        L-90 116
+        L-90 14
+        L-15 14
+        L-15 -22
+        L-90 -22
+        L-90 -80
+        L0 -80
+        L0 -116
+        Z
+      " fill="url(#chromeLetter)"/>
+      
+      <!-- E letter - centered -->
+      <path d="
+        M20 -116
+        L20 116
+        L150 116
+        L150 80
+        L60 80
+        L60 14
+        L130 14
+        L130 -22
+        L60 -22
+        L60 -80
+        L150 -80
+        L150 -116
+        Z
+      " fill="url(#chromeLetter)"/>
+    </g>
+  </g>
+  
+  <!-- Accent dot with glow - top right -->
+  <circle cx="420" cy="95" r="6" fill="#ffffff" opacity="0.7"/>
+  <circle cx="420" cy="95" r="10" fill="#ffffff" opacity="0.2"/>
+  
+  <!-- Bottom accent -->
+  <circle cx="92" cy="417" r="4" fill="#ffffff" opacity="0.3"/>
+</svg>
