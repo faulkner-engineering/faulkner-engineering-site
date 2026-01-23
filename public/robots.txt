@@ -1,0 +1,6 @@
+# Robots.txt for Faulkner Engineering
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://faulkner.engineering/sitemap.xml
