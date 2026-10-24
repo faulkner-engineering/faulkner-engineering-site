@@ -1,0 +1,234 @@
+---
+import Site from '../layouts/Site.astro';
+import { existsSync } from 'node:fs';
+
+// The hero plays public/hyperharbor/demo.mp4 when it exists; until then it shows the screenshot.
+const hasDemo = existsSync(new URL('../../public/hyperharbor/demo.mp4', import.meta.url));
+
+const repo = 'https://github.com/faulkner-engineering/hyperharbor';
+const releases = `${repo}/releases/latest`;
+
+const title = 'HyperHarbor | Your workstation is a VM';
+const description =
+  'HyperHarbor runs your workstation as a Hyper-V virtual machine on a PC you already own and connects you to it in one click from any device. Move it between hosts, keep copies, back it up. Open source, Apache 2.0.';
+
+const quickstart = [
+  { title: 'Install the host', body: 'On the PC that runs Hyper-V, run the host installer and set an admin passphrase.' },
+  { title: 'Install the client', body: 'On the laptop, run the client installer. Hosts on your network appear by themselves.' },
+  { title: 'Pair', body: 'Choose the host, choose Pair, and type the PIN the host shows. Everything after that is mutual TLS.' },
+  { title: 'Connect', body: 'Choose Connect on a VM. The first time, Set up creates your account inside it. Remote Desktop opens.' },
+];
+
+const pillars = [
+  {
+    title: 'Reach it from anywhere',
+    body: 'Wake the PC, start the VM, and open Remote Desktop in one click, at home or away through Tailscale. Camera, microphone, clipboard, and passkeys come along.',
+  },
+  {
+    title: 'Move it, copy it',
+    body: 'Transfer a VM to another host in one step, or keep a copy on a second machine. The host does not need to be special, and it does not need to be permanent.',
+  },
+  {
+    title: 'Back it up, restore it anywhere',
+    body: 'Encrypted, deduplicated backups with Kopia to a folder or a bucket. Restore rebuilds the VM on a fresh host from the backup and a passphrase.',
+  },
+  {
+    title: 'Set it up once',
+    body: 'Create a VM from an ISO with an unattended install, capture a setup profile from a VM you like, and apply it to the next one.',
+  },
+  {
+    title: 'Share the PC with its day job',
+    body: 'A Game ready checklist, game-aware mode that pauses VMs when a full-screen game starts, and a Lean host action for the PC in the living room.',
+  },
+  {
+    title: 'Keep it secure by default',
+    body: 'PIN pairing, mutual TLS, per-user VM accounts with passwords the host rotates on every connect, and an audit log of every change.',
+  },
+];
+
+const faq = [
+  {
+    q: 'Why not Proxmox?',
+    a: 'Proxmox turns a PC into a server. HyperHarbor lets a PC stay a PC. If you are happy to wipe a machine and run Linux, Proxmox is a better hypervisor. If your most capable machine runs Windows and you want to keep it that way, this is for you.',
+  },
+  {
+    q: 'Why not Parsec or another remote desktop app?',
+    a: 'Those share one desktop. HyperHarbor gives you a VM per purpose, with its own account, backups, and the ability to move between hosts, and it uses Windows Remote Desktop, which already handles camera, microphone, and device redirection well.',
+  },
+  {
+    q: 'Will it run on a Linux host?',
+    a: 'No. HyperHarbor is built around Hyper-V, and that is the point. The client runs on Windows today; iPad and phone clients are planned.',
+  },
+  {
+    q: 'What about Windows licensing?',
+    a: 'Each Windows VM needs its own Windows license, and remote access by the licensed user from any device is permitted by the Windows license terms. HyperHarbor does not ship, activate, or bypass Windows licensing. Linux VMs need nothing.',
+  },
+  {
+    q: 'What does it change on my PC?',
+    a: 'It installs a Windows service, allows TCP 48443 through the firewall on Private networks, and administers Hyper-V on your behalf. It can create, change, and delete virtual machines, so read WARRANTY.md in the repository first.',
+  },
+  {
+    q: 'Is it free?',
+    a: 'Yes. Apache 2.0, built and maintained by Faulkner Engineering LLC. The builds are not code signed yet, so Windows SmartScreen may warn on first install.',
+  },
+];
+---
+
+<Site
+  title={title}
+  description={description}
+  path="/hyperharbor"
+  ogImage="https://faulkner.engineering/hyperharbor/og.png"
+  twitterCard="summary_large_image"
+  current="products"
+>
+  <Fragment slot="head">
+    <link rel="icon" type="image/svg+xml" href="/hyperharbor/favicon.svg">
+    <meta name="keywords" content="Hyper-V, remote desktop, virtual machine, workstation, thin client, VM backup, Wake-on-LAN, Tailscale, open source">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "HyperHarbor",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Windows 11",
+      "url": "https://faulkner.engineering/hyperharbor",
+      "downloadUrl": "https://github.com/faulkner-engineering/hyperharbor/releases/latest",
+      "license": "https://www.apache.org/licenses/LICENSE-2.0",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "author": { "@type": "Organization", "name": "Faulkner Engineering LLC", "url": "https://faulkner.engineering" }
+    }
+    </script>
+  </Fragment>
+
+  <!-- Hero -->
+  <section class="mx-auto max-w-6xl px-4 pb-16 pt-16 sm:px-6 sm:pt-24">
+    <div class="grid items-center gap-12 lg:grid-cols-[1fr_1.1fr]">
+      <div>
+        <img src="/hyperharbor/lockup-on-dark.svg" alt="HyperHarbor" class="h-10 w-auto sm:h-12" width="252" height="48">
+        <h1 class="mt-8 text-4xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-5xl">
+          Your workstation is a VM. Everything else is a thin&nbsp;client.
+        </h1>
+        <p class="mt-6 max-w-xl text-lg leading-relaxed text-muted text-pretty">
+          Run your workstation as a Hyper-V virtual machine on a PC you already own. Connect to it in one click from any device, move it between hosts, keep copies, and back it up. Lose a laptop, install one app, and pick up where you left off.
+        </p>
+        <div class="mt-10 flex flex-wrap gap-3">
+          <a href={releases} class="rounded-full bg-harbor px-6 py-3 text-sm font-semibold text-ink transition-opacity hover:opacity-90">
+            Download
+          </a>
+          <a href={repo} class="rounded-full border border-line px-6 py-3 text-sm font-semibold transition-colors hover:border-fg/40">
+            Source on GitHub
+          </a>
+        </div>
+        <p class="mt-6 font-mono text-xs text-dim">Host: Windows 11 Pro with Hyper-V · Client: Windows · Apache 2.0 · Free</p>
+      </div>
+
+      <figure class="overflow-hidden rounded-2xl border border-line bg-panel shadow-2xl shadow-black/40">
+        {hasDemo ? (
+          <video class="block h-auto w-full" poster="/hyperharbor/client-vms.png" controls muted playsinline preload="metadata" width="1600" height="800">
+            <source src="/hyperharbor/demo.mp4" type="video/mp4">
+          </video>
+        ) : (
+          <img src="/hyperharbor/client-vms.png" alt="The HyperHarbor client listing the virtual machines on a host" class="block h-auto w-full" width="1600" height="800">
+        )}
+        <figcaption class="border-t border-line px-4 py-2 font-mono text-xs text-dim">
+          {hasDemo ? 'Wake the PC, start the VM, connect.' : 'The client, listing the virtual machines on a host.'} Screenshots show demo data.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Quickstart -->
+  <section id="quickstart" class="border-t border-line">
+    <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
+      <div class="mb-10 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+        <div>
+          <p class="font-mono text-xs uppercase tracking-widest text-harbor">Quickstart</p>
+          <h2 class="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">First connect in five minutes</h2>
+        </div>
+        <p class="max-w-md text-muted">Two parts: the host on the PC that runs Hyper-V, the client on each device you connect from. Both update themselves.</p>
+      </div>
+      <ol class="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+        {quickstart.map((step, i) => (
+          <li class="bg-ink p-6">
+            <p class="font-mono text-sm text-dim">{String(i + 1).padStart(2, '0')}</p>
+            <h3 class="mt-3 text-lg font-semibold">{step.title}</h3>
+            <p class="mt-2 leading-relaxed text-muted">{step.body}</p>
+          </li>
+        ))}
+      </ol>
+      <p class="mt-6 font-mono text-xs text-dim">
+        Full requirements and install steps are in the <a href={`${repo}#install`} class="underline decoration-line underline-offset-4 hover:text-fg">README</a>. The host's network must be set to Private in Windows.
+      </p>
+    </div>
+  </section>
+
+  <!-- What it does -->
+  <section id="features" class="border-t border-line">
+    <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
+      <p class="font-mono text-xs uppercase tracking-widest text-harbor">What it does</p>
+      <h2 class="mt-3 max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl">The VM is the thing you protect. The hardware is replaceable.</h2>
+      <div class="mt-12 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+        {pillars.map((p) => (
+          <article class="group bg-ink p-7 transition-colors hover:bg-panel">
+            <h3 class="text-lg font-semibold tracking-tight">{p.title}</h3>
+            <p class="mt-3 leading-relaxed text-muted">{p.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why -->
+  <section id="why" class="border-t border-line">
+    <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
+      <div class="grid gap-10 lg:grid-cols-[1fr_1.2fr]">
+        <div>
+          <p class="font-mono text-xs uppercase tracking-widest text-harbor">Why it exists</p>
+          <h2 class="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">Two dead laptops</h2>
+        </div>
+        <div class="space-y-5 text-lg leading-relaxed text-muted text-pretty">
+          <p>One died mid-firmware update an hour before a live demo. The other was joined to a client's tenant by one wrong click and wiped remotely a few weeks later. Both times, everything that mattered lived on a device that could be gone in an afternoon.</p>
+          <p>So the work moved into a VM. While the laptop was in for repair, the host was the gaming PC in the living room. When the laptop came back, the VM moved to it in one step, and a copy stayed behind as a fallback. HyperHarbor is the part that makes that routine: reaching it, pairing a device, credentials, backups, and never setting up a machine from scratch again.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="border-t border-line">
+    <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
+      <p class="font-mono text-xs uppercase tracking-widest text-harbor">Questions</p>
+      <h2 class="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">Before you install</h2>
+      <dl class="mt-10 grid gap-8 sm:grid-cols-2">
+        {faq.map((f) => (
+          <div class="border-t border-line pt-5">
+            <dt class="text-lg font-semibold">{f.q}</dt>
+            <dd class="mt-2 leading-relaxed text-muted">{f.a}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="border-t border-line">
+    <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
+      <div class="rounded-3xl border border-line bg-panel p-6 sm:p-12">
+        <div class="flex flex-col justify-between gap-8 lg:flex-row lg:items-center">
+          <div>
+            <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">Version 0.2 is out. Tell us what breaks.</h2>
+            <p class="mt-4 max-w-xl text-lg text-muted">Bug reports, ideas, and pull requests are welcome. Issues take the host and client versions and your Windows build; the client can save the host's logs for you.</p>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <a href={releases} class="rounded-full bg-harbor px-6 py-3 text-sm font-semibold text-ink transition-opacity hover:opacity-90">Download</a>
+            <a href={`${repo}/issues`} class="rounded-full border border-line px-6 py-3 text-sm font-semibold transition-colors hover:border-fg/40">Report an issue</a>
+          </div>
+        </div>
+        <p class="mt-8 font-mono text-xs text-dim">
+          HyperHarbor is copyright Faulkner Engineering LLC and licensed under the Apache License 2.0. It comes with no warranty. Need help running it for a team? <a href="/#contact" class="underline decoration-line underline-offset-4 hover:text-fg">Get in touch</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</Site>

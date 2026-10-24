@@ -1,7 +1,5 @@
 ---
-import '../styles/global.css'
-
-const year = new Date().getFullYear();
+import Site from '../layouts/Site.astro';
 
 const services = [
   {
@@ -47,86 +45,40 @@ const hyperharborFeatures = [
 const stack = ['Databricks', 'Apache Spark', 'Delta Lake', 'SQL', 'Python', 'Azure', 'AWS', 'dbt', 'Airflow'];
 ---
 
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Faulkner Engineering LLC | Data & AI Consulting</title>
-  <meta name="description" content="Faulkner Engineering LLC is an independent consultancy for data platform architecture, data pipelines, and applied AI, with hands-on training so your team can own what gets built.">
-  <meta name="keywords" content="data engineering, AI consulting, solution architecture, lakehouse, Databricks, data pipelines, data ingestion, engineering education">
-  <meta name="author" content="Faulkner Engineering LLC">
-  <meta name="theme-color" content="#0c0c0d">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="canonical" href="https://faulkner.engineering/">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://faulkner.engineering/">
-  <meta property="og:title" content="Faulkner Engineering LLC | Data & AI Consulting">
-  <meta property="og:description" content="Data platforms that hold up in production. Architecture, pipelines, and applied AI, plus the training to run them.">
-  <meta property="og:site_name" content="Faulkner Engineering LLC">
-  <meta property="og:image" content="https://faulkner.engineering/faulkner-engineering-favicon.png">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:url" content="https://faulkner.engineering/">
-  <meta name="twitter:title" content="Faulkner Engineering LLC | Data & AI Consulting">
-  <meta name="twitter:description" content="Data platforms that hold up in production. Architecture, pipelines, and applied AI, plus the training to run them.">
-  <meta name="twitter:image" content="https://faulkner.engineering/faulkner-engineering-favicon.png">
-
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "Faulkner Engineering LLC",
-    "description": "Data platform architecture, data pipelines, applied AI, and engineering education.",
-    "url": "https://faulkner.engineering",
-    "email": "contact@faulkner.engineering",
-    "areaServed": "United States",
-    "serviceType": ["Data Engineering", "AI Consulting", "Solution Architecture", "Custom Development", "Engineering Education"],
-    "makesOffer": {
-      "@type": "Offer",
-      "itemOffered": {
-        "@type": "SoftwareApplication",
-        "name": "HyperHarbor",
-        "applicationCategory": "UtilitiesApplication",
-        "operatingSystem": "Windows 10, Windows 11",
-        "url": "https://github.com/faulkner-engineering/hyperharbor",
-        "license": "https://www.apache.org/licenses/LICENSE-2.0"
-      },
-      "price": "0",
-      "priceCurrency": "USD"
+<Site
+  title="Faulkner Engineering LLC | Data & AI Consulting"
+  description="Faulkner Engineering LLC is an independent consultancy for data platform architecture, data pipelines, and applied AI, with hands-on training so your team can own what gets built."
+  path="/"
+>
+  <Fragment slot="head">
+    <meta name="keywords" content="data engineering, AI consulting, solution architecture, lakehouse, Databricks, data pipelines, data ingestion, engineering education">
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Faulkner Engineering LLC",
+      "description": "Data platform architecture, data pipelines, applied AI, and engineering education.",
+      "url": "https://faulkner.engineering",
+      "email": "contact@faulkner.engineering",
+      "areaServed": "United States",
+      "serviceType": ["Data Engineering", "AI Consulting", "Solution Architecture", "Custom Development", "Engineering Education"],
+      "makesOffer": {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "SoftwareApplication",
+          "name": "HyperHarbor",
+          "applicationCategory": "UtilitiesApplication",
+          "operatingSystem": "Windows 11",
+          "url": "https://faulkner.engineering/hyperharbor",
+          "license": "https://www.apache.org/licenses/LICENSE-2.0"
+        },
+        "price": "0",
+        "priceCurrency": "USD"
+      }
     }
-  }
-  </script>
-</head>
-<body class="min-h-screen">
-
-  <!-- Background grid -->
-  <div aria-hidden="true" class="pointer-events-none fixed inset-0 -z-10 bg-grid"></div>
-
-  <!-- Header -->
-  <header class="sticky top-0 z-30 border-b border-line/70 bg-ink/80 backdrop-blur-md">
-    <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
-      <a href="#top" class="flex items-center gap-2.5 font-semibold tracking-tight">
-        <img src="/favicon.svg" alt="" class="h-7 w-7" width="28" height="28">
-        <span>Faulkner Engineering</span>
-      </a>
-      <nav class="flex items-center gap-6 text-sm text-muted">
-        <a href="#services" class="hidden hover:text-fg sm:inline">Services</a>
-        <a href="#products" class="hidden hover:text-fg sm:inline">Products</a>
-        <a href="#approach" class="hidden hover:text-fg sm:inline">Approach</a>
-        <a href="#contact" class="rounded-full border border-line px-4 py-1.5 text-fg transition-colors hover:border-accent hover:text-accent">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <main id="top">
+    </script>
+  </Fragment>
 
     <!-- Hero -->
     <section class="mx-auto max-w-6xl px-4 pb-20 pt-16 sm:px-6 sm:pt-24 lg:pb-28">
@@ -237,14 +189,14 @@ const stack = ['Databricks', 'Apache Spark', 'Delta Lake', 'SQL', 'Python', 'Azu
                 ))}
               </ul>
               <div class="mt-8 flex flex-wrap gap-3">
-                <a href="https://github.com/faulkner-engineering/hyperharbor" class="rounded-full bg-fg px-5 py-2.5 text-sm font-semibold text-ink transition-opacity hover:opacity-90">
+                <a href="/hyperharbor" class="rounded-full bg-fg px-5 py-2.5 text-sm font-semibold text-ink transition-opacity hover:opacity-90">
+                  Learn more
+                </a>
+                <a href="https://github.com/faulkner-engineering/hyperharbor" class="rounded-full border border-line px-5 py-2.5 text-sm font-semibold transition-colors hover:border-fg/40">
                   View on GitHub
                 </a>
-                <a href="https://github.com/faulkner-engineering/hyperharbor/releases" class="rounded-full border border-line px-5 py-2.5 text-sm font-semibold transition-colors hover:border-fg/40">
-                  Download
-                </a>
               </div>
-              <p class="mt-6 font-mono text-xs text-dim">Windows 10 &amp; 11 · Apache 2.0</p>
+              <p class="mt-6 font-mono text-xs text-dim">Windows 11 Pro host · Apache 2.0</p>
             </div>
             <div class="border-t border-line lg:border-l lg:border-t-0">
               <img src="/hyperharbor/client-dark.webp" alt="The HyperHarbor client listing virtual machines on a host, with a VM's actions menu open" class="h-full w-full object-cover object-right-top" width="1600" height="800" loading="lazy">
@@ -302,24 +254,9 @@ const stack = ['Databricks', 'Apache Spark', 'Delta Lake', 'SQL', 'Python', 'Azu
       </div>
     </section>
 
-  </main>
-
-  <footer class="border-t border-line">
-    <div class="mx-auto flex max-w-6xl flex-col justify-between gap-2 px-4 py-8 font-mono text-xs text-dim sm:flex-row sm:px-6">
-      <p>© {year} Faulkner Engineering LLC</p>
-      <p>Based in the United States · Working remotely</p>
-    </div>
-  </footer>
+</Site>
 
 <style>
-  .bg-grid {
-    background-image:
-      linear-gradient(to right, rgb(255 255 255 / 0.035) 1px, transparent 1px),
-      linear-gradient(to bottom, rgb(255 255 255 / 0.035) 1px, transparent 1px);
-    background-size: 64px 64px;
-    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 100%);
-  }
-
   .stage {
     animation: stage-light 6s ease-in-out infinite;
   }
@@ -333,5 +270,3 @@ const stack = ['Databricks', 'Apache Spark', 'Delta Lake', 'SQL', 'Python', 'Azu
     8% { background-color: rgb(200 245 96 / 0.08); }
   }
 </style>
-</body>
-</html>
