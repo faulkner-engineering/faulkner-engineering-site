@@ -15,8 +15,9 @@ interface Props {
 }
 
 const site = 'https://faulkner.engineering';
-// Cloudflare Web Analytics site token, set as CF_ANALYTICS_TOKEN at build time. No tag is emitted when it is unset.
-const analyticsToken = import.meta.env.CF_ANALYTICS_TOKEN as string | undefined;
+// Cloudflare Web Analytics site token. It is a public identifier, not a secret. Set CF_ANALYTICS_TOKEN at build
+// time to override it, or set it to an empty string to build without the beacon.
+const analyticsToken = (import.meta.env.CF_ANALYTICS_TOKEN as string | undefined) ?? 'd6475900a9e9458ba45be403bd742cac';
 const {
   title,
   description,
@@ -96,7 +97,7 @@ const link = (anchor: string) => (onHome ? `#${anchor}` : `/#${anchor}`);
   </footer>
 
   {analyticsToken && (
-    <script is:inline defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={`{"token": "${analyticsToken}"}`}></script>
+    <script is:inline type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={`{"token": "${analyticsToken}"}`}></script>
   )}
 
 <style>
