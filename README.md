@@ -20,3 +20,8 @@ every push to `main`.
 | `npm run preview` | Preview the build |
 
 `public/sitemap.xml` is maintained by hand; update `lastmod` when a page changes.
+
+## Analytics
+Cloudflare Web Analytics (free, no cookies). The site token in `src/layouts/Site.astro` is a public identifier, not
+a secret. Set `CF_ANALYTICS_TOKEN` at build time to override it, or to an empty string to build without the beacon.
+Tag links you post elsewhere with `?utm_source=` so the referrer survives apps that strip it.
