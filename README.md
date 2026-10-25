@@ -20,3 +20,8 @@ every push to `main`.
 | `npm run preview` | Preview the build |
 
 `public/sitemap.xml` is maintained by hand; update `lastmod` when a page changes.
+
+## Analytics
+Cloudflare Web Analytics (free, no cookies). The beacon is emitted only when `CF_ANALYTICS_TOKEN` is set at build
+time; the deploy workflow reads it from the repository secret of the same name. Locally, put it in `.env` to test.
+Tag links you post elsewhere with `?utm_source=` so the referrer survives apps that strip it.
