@@ -77,9 +77,9 @@ const link = (anchor: string) => (onHome ? `#${anchor}` : `/#${anchor}`);
         <span>Faulkner Engineering</span>
       </a>
       <nav class="flex items-center gap-6 text-sm text-muted">
-        <a href={link('services')} class:list={['hidden hover:text-fg sm:inline', { 'text-fg': current === 'services' }]}>Services</a>
-        <a href="/hyperharbor" class:list={['hidden hover:text-fg sm:inline', { 'text-fg': current === 'products' }]}>Products</a>
+        <a href="/hyperharbor" class:list={['hidden hover:text-fg sm:inline', { 'text-fg': current === 'products' }]}>HyperHarbor</a>
         <a href={link('approach')} class:list={['hidden hover:text-fg sm:inline', { 'text-fg': current === 'approach' }]}>Approach</a>
+        <a href={link('services')} class:list={['hidden hover:text-fg sm:inline', { 'text-fg': current === 'services' }]}>Consulting</a>
         <a href={link('contact')} class="rounded-full border border-line px-4 py-1.5 text-fg transition-colors hover:border-accent hover:text-accent">Contact</a>
       </nav>
     </div>
