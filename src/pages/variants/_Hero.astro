@@ -1,0 +1,31 @@
+---
+import Site from '../../layouts/Site.astro';
+const repo = 'https://github.com/faulkner-engineering/hyperharbor';
+const { title = 'Variant' } = Astro.props;
+---
+<Site title={title} description="Hero variant" path="/variants" current="products">
+  <section class="mx-auto max-w-6xl px-4 pb-20 pt-16 sm:px-6 sm:pt-24 lg:pb-28">
+    <div class="grid items-center gap-12 lg:grid-cols-[1.25fr_1fr]">
+      <div>
+        <p class="mb-6 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted">
+          <span class="relative flex h-2 w-2">
+            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60"></span>
+            <span class="relative inline-flex h-2 w-2 rounded-full bg-accent"></span>
+          </span>
+          Open source · Apache 2.0
+        </p>
+        <h1 class="text-4xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-6xl">
+          Software for people who run their own&nbsp;machines.
+        </h1>
+        <p class="mt-6 max-w-xl text-lg leading-relaxed text-muted text-pretty">
+          Faulkner Engineering builds tools for home labs and small teams. Our first, HyperHarbor, turns a Windows PC you already own into a home for your virtual machines, reachable in one click from any device.
+        </p>
+        <div class="mt-10 flex flex-wrap gap-3">
+          <a href="/hyperharbor" class="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-ink transition-opacity hover:opacity-90">Get HyperHarbor</a>
+          <a href={repo} class="rounded-full border border-line px-6 py-3 text-sm font-semibold transition-colors hover:border-fg/40">View on GitHub</a>
+        </div>
+      </div>
+      <slot />
+    </div>
+  </section>
+</Site>

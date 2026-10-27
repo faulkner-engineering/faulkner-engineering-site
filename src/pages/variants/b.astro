@@ -1,0 +1,82 @@
+---
+import Hero from './_Hero.astro';
+---
+<Hero title="B · Blueprint">
+  <div aria-hidden="true" class="overflow-hidden rounded-2xl border border-accent/30 bg-panel/60 shadow-2xl shadow-black/40">
+    <svg viewBox="0 0 520 440" class="w-full" fill="none" stroke="#c8f560" stroke-width="1" font-family="ui-monospace, monospace" font-size="10">
+      <defs>
+        <pattern id="bp" width="20" height="20" patternUnits="userSpaceOnUse">
+          <path d="M20 0H0V20" stroke="#c8f560" stroke-opacity="0.08"/>
+        </pattern>
+      </defs>
+      <rect width="520" height="440" fill="url(#bp)"/>
+
+      <!-- Tower PC, front and side -->
+      <g transform="translate(70 70)">
+        <rect x="0" y="0" width="120" height="240" rx="4"/>
+        <rect x="12" y="14" width="96" height="6" fill="#c8f560" fill-opacity="0.25" stroke="none"/>
+        <rect x="12" y="30" width="96" height="6" fill="#c8f560" fill-opacity="0.25" stroke="none"/>
+        <circle cx="100" cy="222" r="3" fill="#c8f560" stroke="none" class="led"/>
+        <rect x="12" y="60" width="96" height="140" stroke-dasharray="3 3"/>
+        <text x="60" y="124" text-anchor="middle" fill="#c8f560" stroke="none">HYPER-V</text>
+        <text x="60" y="138" text-anchor="middle" fill="#c8f560" stroke="none" fill-opacity="0.6">4 × VM</text>
+        <!-- dimensions -->
+        <line x1="0" y1="258" x2="120" y2="258"/>
+        <line x1="0" y1="252" x2="0" y2="264"/><line x1="120" y1="252" x2="120" y2="264"/>
+        <text x="60" y="275" text-anchor="middle" fill="#c8f560" stroke="none">YOUR PC</text>
+        <line x1="-18" y1="0" x2="-18" y2="240"/>
+        <line x1="-24" y1="0" x2="-12" y2="0"/><line x1="-24" y1="240" x2="-12" y2="240"/>
+        <text transform="translate(-30 120) rotate(-90)" text-anchor="middle" fill="#c8f560" stroke="none">ALREADY OWNED</text>
+      </g>
+
+      <!-- Laptop -->
+      <g transform="translate(300 90)">
+        <rect x="0" y="0" width="150" height="90" rx="3"/>
+        <rect x="8" y="8" width="134" height="70" stroke-dasharray="3 3"/>
+        <path d="M-12 96 H162 L154 108 H-4 Z"/>
+        <text x="75" y="48" text-anchor="middle" fill="#c8f560" stroke="none">ANY DEVICE</text>
+      </g>
+
+      <!-- Connection -->
+      <path d="M190 190 C 240 190, 250 140, 300 140" stroke-dasharray="4 4" class="flow"/>
+      <text x="246" y="128" text-anchor="middle" fill="#c8f560" stroke="none">mTLS</text>
+
+      <!-- Callouts -->
+      <g fill="#c8f560" stroke="none">
+        <text x="300" y="240">01  HARDWARE   yours, stays yours</text>
+        <text x="300" y="262">02  SOFTWARE   open source, Apache 2.0</text>
+        <text x="300" y="284">03  DATA       never leaves the building</text>
+        <text x="300" y="306">04  TELEMETRY  none</text>
+      </g>
+      <line x1="300" y1="318" x2="470" y2="318" stroke-opacity="0.4"/>
+
+      <!-- Title block -->
+      <g transform="translate(0 360)">
+        <line x1="0" y1="0" x2="520" y2="0"/>
+        <line x1="340" y1="0" x2="340" y2="80"/>
+        <line x1="430" y1="0" x2="430" y2="80"/>
+        <line x1="0" y1="40" x2="520" y2="40"/>
+        <g fill="#c8f560" stroke="none">
+          <text x="12" y="16" fill-opacity="0.6">DRAWN BY</text>
+          <text x="12" y="31" font-size="12">FAULKNER ENGINEERING LLC</text>
+          <text x="352" y="16" fill-opacity="0.6">DWG NO.</text>
+          <text x="352" y="31" font-size="12">FE-0001</text>
+          <text x="442" y="16" fill-opacity="0.6">REV</text>
+          <text x="442" y="31" font-size="12">A</text>
+          <text x="12" y="56" fill-opacity="0.6">TITLE</text>
+          <text x="12" y="71" font-size="11">SOFTWARE FOR PEOPLE WHO RUN THEIR OWN MACHINES</text>
+          <text x="352" y="56" fill-opacity="0.6">SCALE</text>
+          <text x="352" y="71" font-size="12">1:1</text>
+          <text x="442" y="56" fill-opacity="0.6">LICENSE</text>
+          <text x="442" y="71" font-size="12">APACHE 2.0</text>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <style>
+    .flow { animation: dash 2s linear infinite; }
+    @keyframes dash { to { stroke-dashoffset: -16; } }
+    .led { animation: blink 2s ease-in-out infinite; }
+    @keyframes blink { 50% { opacity: 0.2; } }
+  </style>
+</Hero>

@@ -1,0 +1,47 @@
+---
+import Hero from './_Hero.astro';
+const nodes = [
+  { id: 'desk-pc', x: 250, y: 60 },
+  { id: 'laptop', x: 430, y: 150 },
+  { id: 'phone', x: 420, y: 330 },
+  { id: 'nas', x: 250, y: 420 },
+  { id: 'den-pc', x: 80, y: 330 },
+  { id: 'tablet', x: 70, y: 150 },
+];
+const cx = 250, cy = 240;
+---
+<Hero title="A · Constellation">
+  <div aria-hidden="true" class="relative">
+    <svg viewBox="0 0 500 480" class="w-full" fill="none" font-family="ui-monospace, monospace">
+      <defs>
+        <radialGradient id="haze" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#c8f560" stop-opacity="0.12"/>
+          <stop offset="100%" stop-color="#c8f560" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <circle cx={cx} cy={cy} r="230" fill="url(#haze)"/>
+      <circle cx={cx} cy={cy} r="160" stroke="#26262a" stroke-dasharray="2 6"/>
+      <circle cx={cx} cy={cy} r="100" stroke="#26262a" stroke-dasharray="2 6"/>
+
+      {nodes.map((n, i) => (
+        <g>
+          <line x1={cx} y1={cy} x2={n.x} y2={n.y} stroke="#26262a" stroke-width="1.5"/>
+          <line x1={cx} y1={cy} x2={n.x} y2={n.y} stroke="#c8f560" stroke-width="1.5" stroke-dasharray="6 140" class="packet" style={`animation-delay:${i * 0.7}s`}/>
+          <circle cx={n.x} cy={n.y} r="22" fill="#141416" stroke="#26262a"/>
+          <circle cx={n.x} cy={n.y} r="3" fill="#c8f560" class="pulse" style={`animation-delay:${i * 0.7}s`}/>
+          <text x={n.x} y={n.y + 38} text-anchor="middle" font-size="11" fill="#9a9aa1">{n.id}</text>
+        </g>
+      ))}
+
+      <circle cx={cx} cy={cy} r="54" fill="#0c0c0d" stroke="#26262a" stroke-width="2"/>
+      <image href="/favicon.svg" x={cx - 44} y={cy - 44} width="88" height="88"/>
+    </svg>
+    <p class="absolute bottom-0 left-0 font-mono text-xs text-dim">6 machines · 1 owner · 0 cloud accounts</p>
+  </div>
+  <style>
+    .packet { animation: travel 4.2s linear infinite; }
+    @keyframes travel { from { stroke-dashoffset: 146; } to { stroke-dashoffset: -146; } }
+    .pulse { animation: pulse 4.2s ease-in-out infinite; }
+    @keyframes pulse { 0%, 85%, 100% { r: 3; opacity: 0.6; } 92% { r: 6; opacity: 1; } }
+  </style>
+</Hero>
