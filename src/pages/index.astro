@@ -1,39 +1,7 @@
 ---
 import Site from '../layouts/Site.astro';
 
-const services = [
-  {
-    n: '01',
-    title: 'Data platform architecture',
-    body: 'Lakehouse and warehouse designs that fit how your business actually uses data, not how a vendor demo does.',
-    items: ['Platform assessments', 'Lakehouse & medallion design', 'Governance and cost controls'],
-  },
-  {
-    n: '02',
-    title: 'Pipelines & ingestion',
-    body: 'Batch and streaming ingestion that is observable, idempotent, and boring in the best way.',
-    items: ['Source-to-lakehouse ingestion', 'SQL & Spark transformation', 'Orchestration and monitoring'],
-  },
-  {
-    n: '03',
-    title: 'Applied AI',
-    body: 'Practical AI built on top of clean data: retrieval, automation, and analytics that ship past the prototype.',
-    items: ['LLM & RAG integrations', 'ML-ready feature data', 'Evaluation and guardrails'],
-  },
-  {
-    n: '04',
-    title: 'Team enablement',
-    body: 'Workshops and pairing so your engineers own the system after the engagement ends.',
-    items: ['Hands-on workshops', 'Code review & mentorship', 'Runbooks and documentation'],
-  },
-];
-
-const steps = [
-  { title: 'Assess', body: 'Map your sources, systems, and the decisions the data needs to support.' },
-  { title: 'Design', body: 'A concrete architecture and plan, sized to your team and budget.' },
-  { title: 'Build', body: 'Production code, tested and deployed, in short visible iterations.' },
-  { title: 'Hand off', body: 'Docs, training, and a team that is confident running it.' },
-];
+const repo = 'https://github.com/faulkner-engineering/hyperharbor';
 
 const hyperharborFeatures = [
   'One-click Remote Desktop to Windows & Linux VMs',
@@ -42,40 +10,79 @@ const hyperharborFeatures = [
   'VM create, backup, and move between hosts',
 ];
 
-const stack = ['Databricks', 'Apache Spark', 'Delta Lake', 'SQL', 'Python', 'Azure', 'AWS', 'dbt', 'Airflow'];
+const principles = [
+  { title: 'Build in the open', body: 'Source on GitHub, Apache 2.0, releases tagged and signed. If it is worth shipping, it is worth reading.' },
+  { title: 'Ship small, ship often', body: 'Short releases with a changelog you can actually read. Big rewrites are how projects go quiet.' },
+  { title: 'Use it ourselves first', body: 'Every product starts as a tool we needed and run daily. If it annoys us, it gets fixed before it annoys you.' },
+  { title: 'Respect the machine', body: 'No telemetry, no accounts you did not ask for, nothing phoning home. Your hardware stays yours.' },
+];
+
+const services = [
+  {
+    n: '01',
+    title: 'Data platform architecture',
+    body: 'Lakehouse and warehouse designs that fit how your business actually uses data, not how a vendor demo does.',
+  },
+  {
+    n: '02',
+    title: 'Pipelines & ingestion',
+    body: 'Batch and streaming ingestion that is observable, idempotent, and boring in the best way.',
+  },
+  {
+    n: '03',
+    title: 'Applied AI',
+    body: 'Practical AI built on clean data: retrieval, automation, and analytics that ship past the prototype.',
+  },
+  {
+    n: '04',
+    title: 'Team enablement',
+    body: 'Workshops and pairing so your engineers own the system after the engagement ends.',
+  },
+];
+
+const stack = ['.NET', 'Tauri', 'Rust', 'TypeScript', 'Hyper-V', 'Windows', 'PowerShell', 'Azure', 'GitHub Actions'];
 ---
 
 <Site
-  title="Faulkner Engineering LLC | Data & AI Consulting"
-  description="Faulkner Engineering LLC is an independent consultancy for data platform architecture, data pipelines, and applied AI, with hands-on training so your team can own what gets built."
+  title="Faulkner Engineering LLC | Software for people who run their own machines"
+  description="Faulkner Engineering LLC builds open source software for people who run their own hardware. HyperHarbor turns a Windows PC into a home for your virtual machines. Consulting available for data platforms and applied AI."
   path="/"
+  current="products"
 >
   <Fragment slot="head">
-    <meta name="keywords" content="data engineering, AI consulting, solution architecture, lakehouse, Databricks, data pipelines, data ingestion, engineering education">
+    <meta name="keywords" content="HyperHarbor, Hyper-V, virtual machines, home lab, self-hosted, open source, Windows, remote desktop, data engineering, solution architecture">
     <!-- Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "ProfessionalService",
+      "@type": "Organization",
       "name": "Faulkner Engineering LLC",
-      "description": "Data platform architecture, data pipelines, applied AI, and engineering education.",
+      "description": "Open source software for people who run their own machines, plus consulting for data platforms and applied AI.",
       "url": "https://faulkner.engineering",
       "email": "contact@faulkner.engineering",
       "areaServed": "United States",
-      "serviceType": ["Data Engineering", "AI Consulting", "Solution Architecture", "Custom Development", "Engineering Education"],
-      "makesOffer": {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "SoftwareApplication",
-          "name": "HyperHarbor",
-          "applicationCategory": "UtilitiesApplication",
-          "operatingSystem": "Windows 11",
-          "url": "https://faulkner.engineering/hyperharbor",
-          "license": "https://www.apache.org/licenses/LICENSE-2.0"
+      "makesOffer": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "SoftwareApplication",
+            "name": "HyperHarbor",
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "Windows 11",
+            "url": "https://faulkner.engineering/hyperharbor",
+            "license": "https://www.apache.org/licenses/LICENSE-2.0"
+          },
+          "price": "0",
+          "priceCurrency": "USD"
         },
-        "price": "0",
-        "priceCurrency": "USD"
-      }
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "serviceType": ["Data Engineering", "Solution Architecture", "AI Consulting", "Engineering Education"]
+          }
+        }
+      ]
     }
     </script>
   </Fragment>
@@ -89,83 +96,55 @@ const stack = ['Databricks', 'Apache Spark', 'Delta Lake', 'SQL', 'Python', 'Azu
               <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60"></span>
               <span class="relative inline-flex h-2 w-2 rounded-full bg-accent"></span>
             </span>
-            Taking on new projects
+            Open source · Apache 2.0
           </p>
           <h1 class="text-4xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-6xl">
-            Data platforms that hold up in&nbsp;production.
+            Software for people who run their own&nbsp;machines.
           </h1>
           <p class="mt-6 max-w-xl text-lg leading-relaxed text-muted text-pretty">
-            Faulkner Engineering is an independent consultancy for data architecture, pipelines, and applied AI, with the hands-on training your team needs to own it after we're done.
+            Faulkner Engineering builds tools for home labs and small teams. Our first, HyperHarbor, turns a Windows PC you already own into a home for your virtual machines, reachable in one click from any device.
           </p>
           <div class="mt-10 flex flex-wrap gap-3">
-            <a href="#contact" class="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-ink transition-opacity hover:opacity-90">
-              Start a conversation
+            <a href="/hyperharbor" class="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-ink transition-opacity hover:opacity-90">
+              Get HyperHarbor
             </a>
-            <a href="#services" class="rounded-full border border-line px-6 py-3 text-sm font-semibold transition-colors hover:border-fg/40">
-              What we do
+            <a href={repo} class="rounded-full border border-line px-6 py-3 text-sm font-semibold transition-colors hover:border-fg/40">
+              View on GitHub
             </a>
           </div>
         </div>
 
-        <!-- Pipeline panel -->
+        <!-- Host panel -->
         <div aria-hidden="true" class="rounded-2xl border border-line bg-panel/80 font-mono text-[13px] shadow-2xl shadow-black/40">
           <div class="flex items-center justify-between border-b border-line px-4 py-3 text-dim">
-            <span>pipeline.run</span>
-            <span class="text-accent">● healthy</span>
+            <span>hyperharbor · desk-pc</span>
+            <span class="text-accent">● paired</span>
           </div>
           <ol class="space-y-0 p-4">
             <li class="stage flex items-center justify-between rounded-lg px-3 py-2.5">
-              <span><span class="text-dim">01</span>&nbsp; ingest <span class="text-dim">← sources</span></span>
-              <span class="text-accent">✓</span>
+              <span><span class="text-dim">01</span>&nbsp; work <span class="text-dim">win11 · 8 vCPU · 32 GB</span></span>
+              <span class="text-accent">running</span>
             </li>
             <li class="stage flex items-center justify-between rounded-lg px-3 py-2.5">
-              <span><span class="text-dim">02</span>&nbsp; bronze <span class="text-dim">raw, append-only</span></span>
-              <span class="text-accent">✓</span>
+              <span><span class="text-dim">02</span>&nbsp; client <span class="text-dim">win11 · 8 vCPU · 32 GB</span></span>
+              <span class="text-accent">running</span>
             </li>
             <li class="stage flex items-center justify-between rounded-lg px-3 py-2.5">
-              <span><span class="text-dim">03</span>&nbsp; silver <span class="text-dim">cleaned, conformed</span></span>
-              <span class="text-accent">✓</span>
+              <span><span class="text-dim">03</span>&nbsp; lab <span class="text-dim">ubuntu · 4 vCPU · 16 GB</span></span>
+              <span class="text-muted">off</span>
             </li>
             <li class="stage flex items-center justify-between rounded-lg px-3 py-2.5">
-              <span><span class="text-dim">04</span>&nbsp; gold <span class="text-dim">business-ready</span></span>
-              <span class="text-accent">✓</span>
+              <span><span class="text-dim">04</span>&nbsp; build <span class="text-dim">win11 · 4 vCPU · 8 GB</span></span>
+              <span class="text-muted">off</span>
             </li>
             <li class="stage flex items-center justify-between rounded-lg px-3 py-2.5">
-              <span><span class="text-dim">05</span>&nbsp; serve <span class="text-dim">→ BI · AI · apps</span></span>
+              <span><span class="text-dim">05</span>&nbsp; backup <span class="text-dim">→ nightly · kopia</span></span>
               <span class="text-accent">✓</span>
             </li>
           </ol>
           <div class="border-t border-line px-4 py-3 text-dim">
-            <span class="text-fg">0</span> failed &nbsp;·&nbsp; <span class="text-fg">0</span> surprises
+            <span class="text-fg">2</span> running &nbsp;·&nbsp; <span class="text-fg">0</span> surprises
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Services -->
-    <section id="services" class="border-t border-line">
-      <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-28">
-        <div class="mb-12 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
-          <div>
-            <p class="font-mono text-xs uppercase tracking-widest text-accent">Services</p>
-            <h2 class="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">What we work on</h2>
-          </div>
-          <p class="max-w-md text-muted">From the first raw file landing in storage to the dashboard or model that uses it.</p>
-        </div>
-
-        <div class="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2">
-          {services.map((s) => (
-            <article class="group bg-ink p-8 transition-colors hover:bg-panel">
-              <p class="font-mono text-sm text-dim transition-colors group-hover:text-accent">{s.n}</p>
-              <h3 class="mt-4 text-xl font-semibold tracking-tight">{s.title}</h3>
-              <p class="mt-3 leading-relaxed text-muted">{s.body}</p>
-              <ul class="mt-6 space-y-2 font-mono text-sm text-muted">
-                {s.items.map((i) => (
-                  <li class="flex gap-3"><span class="text-dim">—</span>{i}</li>
-                ))}
-              </ul>
-            </article>
-          ))}
         </div>
       </div>
     </section>
@@ -173,10 +152,15 @@ const stack = ['Databricks', 'Apache Spark', 'Delta Lake', 'SQL', 'Python', 'Azu
     <!-- Products -->
     <section id="products" class="border-t border-line">
       <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-28">
-        <p class="font-mono text-xs uppercase tracking-widest text-accent">Products</p>
-        <h2 class="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">We build our own tools, too</h2>
+        <div class="mb-12 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+          <div>
+            <p class="font-mono text-xs uppercase tracking-widest text-accent">Products</p>
+            <h2 class="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">Your workstation is a VM</h2>
+          </div>
+          <p class="max-w-md text-muted">Keep the PC a PC. Put the work in virtual machines you can reach, move, and back up.</p>
+        </div>
 
-        <article class="mt-12 overflow-hidden rounded-3xl border border-line bg-panel">
+        <article class="overflow-hidden rounded-3xl border border-line bg-panel">
           <div class="grid lg:grid-cols-[1fr_1.35fr]">
             <div class="p-6 sm:p-10">
               <img src="/hyperharbor/lockup-on-dark.svg" alt="HyperHarbor" class="h-9 w-auto sm:h-10" width="210" height="40">
@@ -192,7 +176,7 @@ const stack = ['Databricks', 'Apache Spark', 'Delta Lake', 'SQL', 'Python', 'Azu
                 <a href="/hyperharbor" class="rounded-full bg-fg px-5 py-2.5 text-sm font-semibold text-ink transition-opacity hover:opacity-90">
                   Learn more
                 </a>
-                <a href="https://github.com/faulkner-engineering/hyperharbor" class="rounded-full border border-line px-5 py-2.5 text-sm font-semibold transition-colors hover:border-fg/40">
+                <a href={repo} class="rounded-full border border-line px-5 py-2.5 text-sm font-semibold transition-colors hover:border-fg/40">
                   View on GitHub
                 </a>
               </div>
@@ -203,6 +187,8 @@ const stack = ['Databricks', 'Apache Spark', 'Delta Lake', 'SQL', 'Python', 'Azu
             </div>
           </div>
         </article>
+
+        <p class="mt-8 font-mono text-sm text-dim">More tools are on the way. Follow the <a href={repo} class="text-muted underline decoration-line underline-offset-4 transition-colors hover:text-accent">GitHub organization</a> to see them land.</p>
       </div>
     </section>
 
@@ -215,22 +201,45 @@ const stack = ['Databricks', 'Apache Spark', 'Delta Lake', 'SQL', 'Python', 'Azu
         </h2>
 
         <ol class="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
-          {steps.map((step, i) => (
+          {principles.map((p, i) => (
             <li class="border-t border-line pt-6">
               <p class="font-mono text-sm text-dim">{String(i + 1).padStart(2, '0')}</p>
-              <h3 class="mt-3 text-lg font-semibold">{step.title}</h3>
-              <p class="mt-2 leading-relaxed text-muted">{step.body}</p>
+              <h3 class="mt-3 text-lg font-semibold">{p.title}</h3>
+              <p class="mt-2 leading-relaxed text-muted">{p.body}</p>
             </li>
           ))}
         </ol>
 
         <div class="mt-20">
-          <p class="font-mono text-xs uppercase tracking-widest text-dim">Tools we work with</p>
+          <p class="font-mono text-xs uppercase tracking-widest text-dim">Built with</p>
           <ul class="mt-5 flex flex-wrap gap-2">
             {stack.map((t) => (
               <li class="rounded-full border border-line px-4 py-1.5 font-mono text-sm text-muted">{t}</li>
             ))}
           </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="border-t border-line">
+      <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-28">
+        <div class="mb-12 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+          <div>
+            <p class="font-mono text-xs uppercase tracking-widest text-accent">Services</p>
+            <h2 class="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">Consulting, in limited doses</h2>
+          </div>
+          <p class="max-w-md text-muted">We take on a small number of engagements a year in data platforms and applied AI, when the fit is right.</p>
+        </div>
+
+        <div class="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+          {services.map((s) => (
+            <article class="group bg-ink p-8 transition-colors hover:bg-panel">
+              <p class="font-mono text-sm text-dim transition-colors group-hover:text-accent">{s.n}</p>
+              <h3 class="mt-4 text-lg font-semibold tracking-tight">{s.title}</h3>
+              <p class="mt-3 leading-relaxed text-muted">{s.body}</p>
+            </article>
+          ))}
         </div>
       </div>
     </section>
@@ -241,10 +250,10 @@ const stack = ['Databricks', 'Apache Spark', 'Delta Lake', 'SQL', 'Python', 'Azu
         <div class="rounded-3xl border border-line bg-panel p-6 sm:p-14">
           <p class="font-mono text-xs uppercase tracking-widest text-accent">Contact</p>
           <h2 class="mt-3 max-w-3xl text-3xl font-semibold tracking-tight text-balance sm:text-5xl">
-            Got a data problem that keeps coming back? Let's fix it for good.
+            Running HyperHarbor, or have a project in mind? Say hello.
           </h2>
           <p class="mt-6 max-w-xl text-lg text-muted">
-            Tell us a bit about your stack and what's getting in the way. We'll reply within two business days.
+            Bug reports and feature ideas go to <a href={`${repo}/issues`} class="text-fg underline decoration-line underline-offset-4 transition-colors hover:text-accent">GitHub issues</a>. Everything else, email us. We reply within two business days.
           </p>
           <a href="mailto:contact@faulkner.engineering" class="group mt-10 inline-flex items-center gap-3 text-lg font-medium sm:text-2xl">
             <span class="border-b border-accent/50 pb-1 transition-colors group-hover:border-accent group-hover:text-accent">contact@faulkner.engineering</span>
